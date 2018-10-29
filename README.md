@@ -1,6 +1,3 @@
-# rave-opencart-2.3.x
-Rave payment gateway for Opencart 2.3.x 
-
 # Rave Payment Plugin for Opencart 2.3.x
 This plugin for Opencart 2.3.x allows you to accept payments using Flutterwave's Rave
 
