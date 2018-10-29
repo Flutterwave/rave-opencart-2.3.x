@@ -1,5 +1,5 @@
 <?php
-class ControllerPaymentRave extends Controller
+class ControllerExtensionPaymentRave extends Controller
 {
     private $error = array();
 
@@ -10,13 +10,14 @@ class ControllerPaymentRave extends Controller
         $this->document->setTitle($this->language->get('heading_title'));
 
         $this->load->model('setting/setting');
-
+    
+        
         if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
             $this->model_setting_setting->editSetting('rave', $this->request->post);
 
             $this->session->data['success'] = $this->language->get('text_success');
 
-            $this->response->redirect($this->url->link('extension/extension', 'token=' . $this->session->data['token']. '&type=payment', 'SSL'));
+            $this->response->redirect($this->url->link('extension/extension', 'token=' . $this->session->data['token']. '&type=payment', true));
         }
 
         $data['heading_title'] = $this->language->get('heading_title');
@@ -39,6 +40,12 @@ class ControllerPaymentRave extends Controller
         $data['entry_live'] = $this->language->get('entry_live');
         $data['entry_debug'] = $this->language->get('entry_debug');
         $data['entry_total'] = $this->language->get('entry_total');
+        $data['entry_payment_plan'] = $this->language->get('entry_payment_plan');
+        $data['entry_modal_logo'] = $this->language->get('entry_modal_logo');
+        $data['entry_modal_title'] = $this->language->get('entry_modal_title');
+        $data['entry_modal_desc'] = $this->language->get('entry_modal_desc');
+        $data['entry_meta_name'] = $this->language->get('entry_meta_name');
+        $data['entry_meta_value'] = $this->language->get('entry_meta_value');
         $data['entry_approved_status'] = $this->language->get('entry_approved_status');
         $data['entry_declined_status'] = $this->language->get('entry_declined_status');
         $data['entry_error_status'] = $this->language->get('entry_error_status');
@@ -49,6 +56,7 @@ class ControllerPaymentRave extends Controller
         $data['help_live'] = $this->language->get('help_live');
         $data['help_debug'] = $this->language->get('help_debug');
         $data['help_total'] = $this->language->get('help_total');
+        $data['help_payment_plan'] = $this->language->get('help_payment_plan');
 
         $data['error_permission'] = $this->language->get('error_permission');
         $data['error_test_public_key'] = $this->language->get('error_test_public_key');
@@ -78,30 +86,34 @@ class ControllerPaymentRave extends Controller
 
         $data['breadcrumbs'][] = array(
         'text' => $this->language->get('text_home'),
-        'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], 'SSL')
+        'href' => $this->url->link('common/home', 'token=' . $this->session->data['token'], true)
         );
 
         $data['breadcrumbs'][] = array(
         'text' => $this->language->get('text_payment'),
-        'href' => $this->url->link('extension/extension', 'token=' . $this->session->data['token'].'&type=payment', 'SSL')
+        'href' => $this->url->link('extension/extension', 'token=' . $this->session->data['token'].'&type=payment', true)
         );
 
         $data['breadcrumbs'][] = array(
         'text' => $this->language->get('heading_title'),
-        'href' => $this->url->link('extension/payment/rave', 'token=' . $this->session->data['token'], 'SSL')
+        'href' => $this->url->link('extension/payment/rave', 'token=' . $this->session->data['token'], true)
         );
 
-        $data['action'] = $this->url->link('extension/payment/rave', 'token=' . $this->session->data['token'], 'SSL');
+        $data['action'] = $this->url->link('extension/payment/rave', 'token=' . $this->session->data['token'], true);
 
-        $data['cancel'] = $this->url->link('extension/payment', 'token=' . $this->session->data['token'] . '&type=payment', 'SSL');
+        $data['cancel'] = $this->url->link('extension/payment/rave', 'token=' . $this->session->data['token'] . '&type=payment', true);
 
-         $parameters  = array(
+        $parameters  = array(
                 'rave_test_public_key',
                 'rave_live_public_key',
                 'rave_test_secret_key',
                 'rave_live_secret_key',
                 'rave_live',
                 'rave_total',
+                'rave_modal_logo',
+                'rave_modal_title',
+                'rave_modal_desc',
+                'rave_payment_plan',
                 'rave_approved_status_id',
                 'rave_declined_status_id',
                 'rave_error_status_id',
@@ -134,7 +146,7 @@ class ControllerPaymentRave extends Controller
         $data['column_left'] = $this->load->controller('common/column_left');
         $data['footer'] = $this->load->controller('common/footer');
 
-        $this->response->setOutput($this->load->view('payment/rave.tpl', $data));
+        $this->response->setOutput($this->load->view('extension/payment/rave.tpl', $data));
     }
     
     private function validate() 

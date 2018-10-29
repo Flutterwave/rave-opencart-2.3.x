@@ -15,11 +15,16 @@
       customer_email: '<?php echo $email; ?>',
       customer_firstname:'<?php echo $firstname; ?>',
       customer_lastname: '<?php echo $lastname; ?>',
-      amount: <?php echo $amount; ?>,
+      amount: '<?php echo $amount; ?>',
       customer_phone: '<?php echo $phone; ?>',
       country: '<?php echo $country; ?>',
       currency: '<?php echo $currency; ?>',
       txref: '<?php echo $reference; ?>',
+      payment_plan: '<?php echo $payment_plan; ?>',
+      custom_logo: '<?php echo $custom_logo; ?>',
+      custom_title: '<?php echo $custom_title; ?>',
+      custom_description: '<?php echo $custom_description; ?>',
+      
       onclose: function() {},
       callback: function(response) {
         var flw_ref = response.tx.flwRef; 

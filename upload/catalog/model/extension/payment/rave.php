@@ -1,9 +1,9 @@
 <?php
-class ModelPaymentRave extends Model
+class ModelExtensionPaymentRave extends Model
 {
     public function getMethod($address, $total)
     {
-        $this->load->language('payment/rave');
+        $this->load->language('extension/payment/rave');
 
         $query = $this->db->query(
             "SELECT *
