@@ -1,7 +1,7 @@
 # Rave Payment Plugin for Opencart 2.3.x
 This plugin for Opencart 2.3.x allows you to accept payments using Flutterwave's Rave
 
- - **Tags:** rave, flutterwave, payment gateway, bank account, credit card, debit card, nigeria, kenya, ghana, south africa, africa, international, mastercard, visa, KES, GHC, NGN, ZAR, Sprout Invoice, Wordpress.
+ - **Tags:** rave, flutterwave, payment gateway, bank account, credit card, debit card, nigeria, kenya, ghana, south africa, africa, international, mastercard, visa, KES, GHC, NGN, ZAR, TZS, UGX, Opencart..
 
 
 ## Requirements

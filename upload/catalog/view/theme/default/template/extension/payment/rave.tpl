@@ -20,7 +20,6 @@
       country: '<?php echo $country; ?>',
       currency: '<?php echo $currency; ?>',
       txref: '<?php echo $reference; ?>',
-      payment_plan: '<?php echo $payment_plan; ?>',
       custom_logo: '<?php echo $custom_logo; ?>',
       custom_title: '<?php echo $custom_title; ?>',
       custom_description: '<?php echo $custom_description; ?>',

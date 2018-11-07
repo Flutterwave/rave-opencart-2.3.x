@@ -140,13 +140,6 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label class="col-sm-2 control-label" for="payment_plan"><span data-toggle="tooltip" title="<?php echo $help_payment_plan; ?>"><?php echo $entry_payment_plan; ?>
-								</span></label> 
-								<div class="col-sm-10">
-									<input type="text" name="rave_payment_plan" value="<?php echo $rave_payment_plan; ?>" placeholder="<?php echo $entry_payment_plan; ?>" id="payment_plan" class="form-control" />
-								</div>
-							</div>
-							<div class="form-group">
 								<label class="col-sm-2 control-label" for="input-sort-order">
 <?php echo $entry_sort_order; ?>
 								</label> 

@@ -33,7 +33,6 @@ class ControllerExtensionPaymentRave extends Controller {
             $data['email'] = $order_info['email'];
             $data['firstname'] = $order_info['firstname'];
             $data['phone']  = $order_info['telephone'];
-            $data['payment_plan'] = $this->config->get('rave_payment_plan');
             $data['custom_logo'] = $this->config->get('rave_modal_logo');
             $data['custom_title'] = $this->config->get('rave_modal_title');
             $data['custom_description'] = $this->config->get('rave_modal_desc');
@@ -127,9 +126,9 @@ class ControllerExtensionPaymentRave extends Controller {
             if ($order_info) {
 
                 $order_status_id = $this->config->get('config_order_status_id');
-                $amount = (int)$order_info['total'];
+                $amount = $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false);
                 $currency = $order_info['currency_code'];
-
+                
                 if($response_api['data']['status'] === 'successful') {
                         
                     if(($amount ==  $response_api['data']['amount']) && ($currency ==  $response_api['data']['transaction_currency'])){ 

@@ -40,7 +40,6 @@ class ControllerExtensionPaymentRave extends Controller
         $data['entry_live'] = $this->language->get('entry_live');
         $data['entry_debug'] = $this->language->get('entry_debug');
         $data['entry_total'] = $this->language->get('entry_total');
-        $data['entry_payment_plan'] = $this->language->get('entry_payment_plan');
         $data['entry_modal_logo'] = $this->language->get('entry_modal_logo');
         $data['entry_modal_title'] = $this->language->get('entry_modal_title');
         $data['entry_modal_desc'] = $this->language->get('entry_modal_desc');
@@ -56,7 +55,6 @@ class ControllerExtensionPaymentRave extends Controller
         $data['help_live'] = $this->language->get('help_live');
         $data['help_debug'] = $this->language->get('help_debug');
         $data['help_total'] = $this->language->get('help_total');
-        $data['help_payment_plan'] = $this->language->get('help_payment_plan');
 
         $data['error_permission'] = $this->language->get('error_permission');
         $data['error_test_public_key'] = $this->language->get('error_test_public_key');
@@ -113,7 +111,6 @@ class ControllerExtensionPaymentRave extends Controller
                 'rave_modal_logo',
                 'rave_modal_title',
                 'rave_modal_desc',
-                'rave_payment_plan',
                 'rave_approved_status_id',
                 'rave_declined_status_id',
                 'rave_error_status_id',
