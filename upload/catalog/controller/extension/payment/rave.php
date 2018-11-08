@@ -33,7 +33,11 @@ class ControllerExtensionPaymentRave extends Controller {
             $data['email'] = $order_info['email'];
             $data['firstname'] = $order_info['firstname'];
             $data['phone']  = $order_info['telephone'];
-            
+            $data['custom_logo'] = $this->config->get('rave_modal_logo');
+            $data['custom_title'] = $this->config->get('rave_modal_title');
+            $data['custom_description'] = $this->config->get('rave_modal_desc');
+
+
             $data['lastname'] = $order_info['lastname'];
             $data['currency'] = $order_info['currency_code'];
             switch ($order_info['currency_code']) {
@@ -43,23 +47,20 @@ class ControllerExtensionPaymentRave extends Controller {
                 case 'KES':
                     $country = 'KE';
                     break;
-                case 'NGN':
-                    $country = 'NG';
-                    break;
                 case 'ZAR':
                     $country = 'ZA';
                     break;
                 default:
-                    $country = 'US';
+                    $country = 'NG';
                     break;
             }
             $data['country'] = $country;
             $data['callback_url'] = $this->url->link('extension/payment/rave/callback', 'reference=' . rawurlencode($data['reference']), 'SSL');
 
-            if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/rave.tpl')) {
-                return $this->load->view($this->config->get('config_template') . '/template/payment/rave.tpl', $data);
+            if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/extension/payment/rave.tpl')) {
+                return $this->load->view($this->config->get('config_template') . '/template/extension/payment/rave.tpl', $data);
             } else {
-                return $this->load->view('payment/rave.tpl', $data);
+                return $this->load->view('extension/payment/rave.tpl', $data);
 
             }
         }
@@ -125,8 +126,9 @@ class ControllerExtensionPaymentRave extends Controller {
             if ($order_info) {
 
                 $order_status_id = $this->config->get('config_order_status_id');
-                $amount = (int)$order_info['total'];
+                $amount = $this->currency->format($order_info['total'], $order_info['currency_code'], $order_info['currency_value'], false);
                 $currency = $order_info['currency_code'];
+                
                 if($response_api['data']['status'] === 'successful') {
                         
                     if(($amount ==  $response_api['data']['amount']) && ($currency ==  $response_api['data']['transaction_currency'])){ 

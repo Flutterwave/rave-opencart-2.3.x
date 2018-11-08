@@ -111,7 +111,27 @@
 									<?php } ?>
 								</div>
 							</div>
-							
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="entry_modal_logo"><?php echo $entry_modal_logo; ?>
+								</label> 
+								<div class="col-sm-10">
+									<input type="text" name="rave_modal_logo" value="<?php echo $rave_modal_logo; ?>" placeholder="<?php echo $entry_modal_logo; ?>" id="modal_logo" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="entry_modal_title"><?php echo $entry_modal_title; ?>
+								</label> 
+								<div class="col-sm-10">
+									<input type="text" name="rave_modal_title" value="<?php echo $rave_modal_title; ?>" placeholder="<?php echo $entry_modal_title; ?>" id="modal_title" class="form-control" />
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-2 control-label" for="entry_modal_desc"><?php echo $entry_modal_desc; ?>
+								</label> 
+								<div class="col-sm-10">
+									<input type="text" name="rave_modal_desc" value="<?php echo $rave_modal_desc; ?>" placeholder="<?php echo $entry_modal_desc; ?>" id="modal_desc" class="form-control" />
+								</div>
+							</div>
 							<div class="form-group">
 								<label class="col-sm-2 control-label" for="input-total"><span data-toggle="tooltip" title="<?php echo $help_total; ?>"><?php echo $entry_total; ?>
 								</span></label> 
@@ -134,6 +154,7 @@
 								<div class="col-sm-10">
 									<select name="rave_geo_zone_id" id="input-geo-zone" class="form-control">
 										<option value="0">
+
 <?php echo $text_all_zones; ?>
 										</option>
 <?php foreach ($geo_zones as $geo_zone) { ?>
